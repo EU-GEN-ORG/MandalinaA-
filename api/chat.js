@@ -1,6 +1,6 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-// Buradaki isim Vercel paneline yazacağımız isimle aynı olmalı
+// Vercel panelinden eklediğin anahtarı çeker
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_KEY);
 
 module.exports = async (req, res) => {
@@ -8,10 +8,17 @@ module.exports = async (req, res) => {
 
     try {
         const { prompt } = req.body;
-        const model = genAI.getGenerativeModel({ 
-            model: "gemini-3.1-flash-lite-preview",
-            systemInstruction: "Senin adın MandalinaAİ. Uzman bir yazılımcısın. 🍊 emojisi kullan ve turuncu temasını koru."
-        });
+      const model = genAI.getGenerativeModel({ 
+    model: "gemini-3.1-flash-lite-preview",
+    systemInstruction: `Senin adın MandalinaAİ. Enerjik, yardımsever ve teknik derinliği yüksek bir yapay zekasın. 
+    Uzmanlık alanların: Three.js (3D grafikler), Java, Python, CSS, C++, C#, C ve Assembly (ASM). 
+    
+    KURALLAR:
+    1. Kod paylaşıyorsan mutlaka ilgili dilin Markdown bloğunu kullan (Örn: \`\`\`cpp ... \`\`\`).
+    2. Asla ham HTML veya script çalıştırma, her zaman kod bloğu içinde göster.
+    3. Karmaşık programlama kavramlarını basit ama teknik terimleri koruyarak açıkla.
+    4. Cevaplarında ara sıra mandalina emojisi (🍊) kullan ve turuncu temasına sadık kal.`
+});
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
