@@ -1,0 +1,140 @@
+:root {
+    /* M3 Renk Paleti - Deep Orange / Surface */
+    --md-sys-color-primary: #E65100; /* Mandalina Ana Renk */
+    --md-sys-color-on-primary: #FFFFFF;
+    --md-sys-color-surface: #FFF3E0; /* Hafif Turuncu Yüzey */
+    --md-sys-color-on-surface: #1B1B1B;
+    --md-sys-color-surface-variant: #FFE0B2;
+    --md-sys-color-outline: #85736E;
+    
+    /* M3 Typography */
+    --md-sys-typescale-headline-small-font: 400 1.5rem/2rem 'Roboto', sans-serif;
+    --md-sys-typescale-body-large-font: 400 1rem/1.5rem 'Roboto', sans-serif;
+    
+    /* M3 Shape & Elevation */
+    --md-sys-shape-corner-extra-large: 28px;
+    --md-sys-shape-corner-full: 999px;
+    --md-sys-elevation-level1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    --md-sys-elevation-level2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.m3-app-container {
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--md-sys-elevation-level2);
+}
+
+/* M3 Top App Bar */
+.m3-top-app-bar {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: var(--md-sys-elevation-level1);
+}
+
+.m3-title {
+    margin: 0;
+    font: var(--md-sys-typescale-headline-small-font);
+}
+
+/* M3 Chat Surface */
+#chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: var(--md-sys-color-surface);
+}
+
+/* M3 Message Bubbles */
+.message {
+    padding: 12px 16px;
+    border-radius: var(--md-sys-shape-corner-extra-large);
+    max-width: 80%;
+    word-wrap: break-word;
+    font: var(--md-sys-typescale-body-large-font);
+    box-shadow: var(--md-sys-elevation-level1);
+}
+
+.message.user-msg {
+    align-self: flex-end;
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    border-bottom-right-radius: 4px;
+}
+
+.message.ai-msg {
+    align-self: flex-start;
+    background-color: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface);
+    border-bottom-left-radius: 4px;
+}
+
+/* M3 Input Container */
+.m3-input-container {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--md-sys-color-outline);
+    background-color: white;
+}
+
+/* M3 Text Field */
+.m3-input-field {
+    flex: 1;
+    border: 1px solid var(--md-sys-color-outline);
+    border-radius: var(--md-sys-shape-corner-full);
+    padding: 12px 20px;
+    font: var(--md-sys-typescale-body-large-font);
+    background-color: white;
+    transition: 0.2s border-color;
+}
+
+.m3-input-field:focus {
+    outline: none;
+    border-color: var(--md-sys-color-primary);
+    border-width: 2px;
+}
+
+/* M3 Icon Button */
+.m3-icon-button {
+    background: transparent;
+    border: none;
+    color: var(--md-sys-color-primary);
+    cursor: pointer;
+    padding: 12px;
+    border-radius: var(--md-sys-shape-corner-full);
+    transition: 0.2s background-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.m3-icon-button:hover {
+    background-color: rgba(230, 81, 0, 0.08); /* Hafif turuncu ripple */
+}
+
+.m3-icon-button .material-symbols-outlines {
+    font-size: 24px;
+}
